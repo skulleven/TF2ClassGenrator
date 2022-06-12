@@ -5,4 +5,12 @@ This is a shitty TF2 Random Class Generator. It has a weapon list and all of the
 
 ![image](https://user-images.githubusercontent.com/41348489/172226116-1dddc8a9-3291-48a5-8679-1edec01f346d.png)
 # Building
-Firstly, clone the repo. Then open the solution file in Visual Studio 2019. Then press Start. Close the program. Open the project in file explorer. Copy the tf2Weapon.txt and Images folder in there. Build again and you have a working version.
+1)Clone the repo.
+
+2)Open Visual Studio(2019 or later)
+
+3)Open the solution file.
+
+4)Press Start
+
+If you get an error be sure you have .NET Framework (4.7.2 or above) installed

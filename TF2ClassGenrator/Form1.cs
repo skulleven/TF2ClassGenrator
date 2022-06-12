@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
+using System.IO.Compression;
 
 namespace TF2ClassGenrator
 {
@@ -18,6 +20,16 @@ namespace TF2ClassGenrator
 
         public Form1()
         {
+            string ImagesFolder = "Images";
+            if(!Directory.Exists(ImagesFolder))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://drive.google.com/u/0/uc?id=1x1ZOl7w4eGKVRsZ41KFwV4MSNm7FMCED&export=download", "tf2Weapons.txt");
+                webClient.DownloadFile("https://drive.google.com/u/0/uc?id=1wd14YrQ5opyXMI_RBolb1JjKqMUg17TV&export=download", "Images.zip");
+                ZipFile.ExtractToDirectory("Images.zip", ImagesFolder + "/..");
+                File.Delete("Images.zip");
+            }
+            
             InitializeComponent();
         }
 
@@ -27,6 +39,7 @@ namespace TF2ClassGenrator
             Class = random.Next(1, 10);
             var weaponPath = "tf2Weapons.txt";
             string[] lines = System.IO.File.ReadAllLines(weaponPath);
+            string imageLocation = "Images/";
             switch (Class)
             {
                 case 1:
@@ -34,9 +47,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(1, 6)];
                     label3.Text = lines[random.Next(7, 16)];
                     label4.Text = lines[random.Next(18, 29)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -45,9 +58,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(30, 38)];
                     label3.Text = lines[random.Next(39, 48)];
                     label4.Text = lines[random.Next(49, 55)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -56,9 +69,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(56, 62)];
                     label3.Text = lines[random.Next(63, 71)];
                     label4.Text = lines[random.Next(72, 83)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -67,9 +80,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(84, 90)];
                     label3.Text = lines[random.Next(91, 97)];
                     label4.Text = lines[random.Next(98, 108)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -78,9 +91,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(109, 114)];
                     label3.Text = lines[random.Next(115, 123)];
                     label4.Text = lines[random.Next(124, 132)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -88,21 +101,21 @@ namespace TF2ClassGenrator
                     label1.Text = "Engineer";
                     label2.Text = lines[random.Next(133, 138)];
                     label3.Text = lines[random.Next(139, 144)];
-                    label4.Text = lines[random.Next(145, 150)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    label4.Text = lines[random.Next(145, 152)];
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
                 case 7:
                     label1.Text = "Medic";
-                    label2.Text = lines[random.Next(151, 154)];
-                    label3.Text = lines[random.Next(155, 158)];
-                    label4.Text = lines[random.Next(159, 163)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    label2.Text = lines[random.Next(154, 156)];
+                    label3.Text = lines[random.Next(157, 160)];
+                    label4.Text = lines[random.Next(161, 165)];
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -111,9 +124,9 @@ namespace TF2ClassGenrator
                     label2.Text = lines[random.Next(164, 173)];
                     label3.Text = lines[random.Next(174, 180)];
                     label4.Text = lines[random.Next(181, 184)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
                     ExtraPicture.Visible = false;
                     label5.Visible = false;
                     break;
@@ -125,10 +138,10 @@ namespace TF2ClassGenrator
                     label3.Text = lines[random.Next(193, 199)];
                     label4.Text = lines[random.Next(205, 208)];
                     label5.Text = lines[random.Next(200, 204)];
-                    PrimaryImage.ImageLocation = "Images/" + label2.Text + ".png";
-                    SecondaryImage.ImageLocation = "Images/" + label3.Text + ".png";
-                    MeleeImage.ImageLocation = "Images/" + label4.Text + ".png";
-                    ExtraPicture.ImageLocation = "Images/" + label5.Text + ".png";
+                    PrimaryImage.ImageLocation = imageLocation + label2.Text + ".png";
+                    SecondaryImage.ImageLocation = imageLocation + label3.Text + ".png";
+                    MeleeImage.ImageLocation = imageLocation + label4.Text + ".png";
+                    ExtraPicture.ImageLocation = imageLocation + label5.Text + ".png";
                     break;
             }
 
